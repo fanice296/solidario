@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#e8572a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SOLIDARIO">
+  <meta name="description" content="Ayudemos a Sofía a recuperar su visión. Compartí la campaña solidaria.">
+  <meta property="og:title" content="SOLIDARIO - Ayudemos a Diandra 👁️❤️">
+  <meta property="og:description" content="Una niña necesita tu ayuda para costear su cirugía ocular. ¡Compartí y hacé la diferencia!">
+  <meta property="og:type" content="website">
+  <title>SOLIDARIO</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --coral: #e8572a;
+      --coral-light: #f47b52;
+      --coral-pale: #fff3ee;
+      --coral-deep: #b83e17;
+      --warm-dark: #2a1a12;
+      --warm-mid: #6b3c26;
+      --warm-gray: #9e8478;
+      --cream: #fff8f4;
+      --white: #ffffff;
+      --green-wa: #25d366;
+      --green-wa-dark: #128c7e;
+      --shadow-warm: 0 4px 24px rgba(232,87,42,0.18);
+      --shadow-card: 0 2px 16px rgba(42,26,18,0.10);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--cream);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--warm-dark);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── HEADER ─── */
+    .header {
+      background: var(--coral);
+      color: white;
+      padding: env(safe-area-inset-top, 0) 0 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.22);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .logo-text {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .logo-tag {
+      font-size: 10px;
+      font-weight: 500;
+      opacity: 0.75;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .share-count {
+      background: rgba(255,255,255,0.20);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    /* ─── HERO BANNER ─── */
+    .hero {
+      background: linear-gradient(160deg, #fff3ee 0%, #ffe8dc 100%);
+      padding: 28px 20px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(232,87,42,0.10) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-emoji {
+      font-size: 52px;
+      display: block;
+      margin-bottom: 12px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--warm-dark);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--coral);
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--warm-mid);
+      line-height: 1.6;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    .main {
+      padding: 0 16px 120px;
+    }
+
+    /* ─── CAMPAIGN IMAGE CARD ─── */
+    .campaign-card {
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: var(--shadow-card);
+      margin: 20px 0 16px;
+      overflow: hidden;
+      border: 1px solid rgba(232,87,42,0.12);
+    }
+    .campaign-card-header {
+      padding: 14px 18px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(232,87,42,0.08);
+    }
+    .avatar-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral), var(--coral-deep));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .avatar-info strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--warm-dark);
+    }
+    .avatar-info span {
+      font-size: 12px;
+      color: var(--warm-gray);
+    }
+    .urgent-badge {
+      margin-left: auto;
+      background: #fff3ee;
+      color: var(--coral);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(232,87,42,0.25);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Image upload/preview zone */
+    .image-zone {
+      position: relative;
+      background: #f9f1ed;
+      min-height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .image-zone:hover { background: #f2e8e3; }
+    .image-zone img {
+      width: 100%;
+      max-height: 380px;
+      object-fit: contain;
+      display: block;
+    }
+    .image-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 40px 20px;
+      text-align: center;
+      pointer-events: none;
+    }
+    .image-placeholder .placeholder-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(232,87,42,0.10);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+    }
+    .image-placeholder p {
+      font-size: 14px;
+      color: var(--warm-mid);
+      font-weight: 500;
+    }
+    .image-placeholder small {
+      font-size: 12px;
+      color: var(--warm-gray);
+    }
+    .image-loaded-overlay {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.55);
+      color: white;
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(4px);
+      display: none;
+    }
+    .image-loaded-overlay.visible { display: flex; }
+
+    #file-input { display: none; }
+
+    .campaign-card-footer {
+      padding: 12px 18px;
+      font-size: 13px;
+      color: var(--warm-gray);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ─── MESSAGE BOX ─── */
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin: 20px 0 10px;
+      padding: 0 4px;
+    }
+    .message-box {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(232,87,42,0.10);
+      overflow: hidden;
+    }
+    .message-box-header {
+      padding: 12px 16px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(232,87,42,0.06);
+    }
+    .message-box-header span {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--warm-mid);
+    }
+    .edit-btn {
+      background: none;
+      border: 1px solid rgba(232,87,42,0.30);
+      color: var(--coral);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .edit-btn:hover { background: var(--coral-pale); }
+    #message-text {
+      width: 100%;
+      border: none;
+      outline: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--warm-dark);
+      font-family: inherit;
+      background: transparent;
+      resize: none;
+      min-height: 120px;
+    }
+
+    /* ─── STATS ROW ─── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .stat-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 14px 10px;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(232,87,42,0.08);
+    }
+    .stat-number {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--coral);
+      display: block;
+    }
+    .stat-label {
+      font-size: 10px;
+      color: var(--warm-gray);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 3px;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .steps-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: var(--shadow-card);
+      margin: 20px 0;
+      border: 1px solid rgba(232,87,42,0.08);
+    }
+    .steps-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--warm-dark);
+      margin-bottom: 16px;
+    }
+    .step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .step:last-child { margin-bottom: 0; }
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--coral-pale);
+      color: var(--coral);
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(232,87,42,0.20);
+    }
+    .step-content strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--warm-dark);
+      margin-bottom: 2px;
+    }
+    .step-content p {
+      font-size: 13px;
+      color: var(--warm-gray);
+      line-height: 1.5;
+    }
+
+    /* ─── BOTTOM ACTION BAR ─── */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-top: 1px solid rgba(232,87,42,0.12);
+      padding: 14px 16px env(safe-area-inset-bottom, 14px);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 -4px 24px rgba(42,26,18,0.10);
+      z-index: 200;
+    }
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--green-wa);
+      color: white;
+      border: none;
+      border-radius: 16px;
+      padding: 16px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: all 0.2s;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    }
+    .btn-whatsapp:hover { background: var(--green-wa-dark); transform: translateY(-1px); }
+    .btn-whatsapp:active { transform: scale(0.97); }
+    .btn-whatsapp svg { width: 24px; height: 24px; flex-shrink: 0; }
+    .btn-secondary-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .btn-secondary {
+      background: none;
+      border: 1.5px solid rgba(232,87,42,0.30);
+      color: var(--coral);
+      border-radius: 12px;
+      padding: 11px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.15s;
+    }
+    .btn-secondary:hover { background: var(--coral-pale); }
+    .btn-secondary:active { transform: scale(0.97); }
+    .btn-secondary svg { width: 18px; height: 18px; }
+
+    /* ─── TOAST ─── */
+    .toast {
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: var(--warm-dark);
+      color: white;
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 999;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ─── INSTALL BANNER ─── */
+    .install-banner {
+      background: linear-gradient(135deg, var(--coral), var(--coral-deep));
+      color: white;
+      border-radius: 16px;
+      padding: 18px;
+      margin: 20px 0;
+      display: none;
+      align-items: center;
+      gap: 14px;
+    }
+    .install-banner.visible { display: flex; }
+    .install-banner-text strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .install-banner-text p {
+      font-size: 13px;
+      opacity: 0.85;
+      line-height: 1.4;
+    }
+    .btn-install {
+      background: white;
+      color: var(--coral);
+      border: none;
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--warm-gray);
+      padding: 8px 0 4px;
+      line-height: 1.6;
+    }
+    .footer-note a {
+      color: var(--coral);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(42,26,18,0.60);
+      z-index: 500;
+      display: none;
+      align-items: flex-end;
+      padding: 0;
+      backdrop-filter: blur(3px);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-sheet {
+      background: var(--white);
+      width: 100%;
+      border-radius: 24px 24px 0 0;
+      padding: 24px 20px env(safe-area-inset-bottom, 24px);
+      animation: slideUp 0.3s ease-out;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .modal-handle {
+      width: 40px;
+      height: 4px;
+      background: #e0d8d3;
+      border-radius: 2px;
+      margin: 0 auto 20px;
+    }
+    .modal-sheet h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--warm-dark);
+    }
+    .ios-instructions {
+      background: var(--coral-pale);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .ios-step {
+      font-size: 14px;
+      color: var(--warm-mid);
+      line-height: 1.6;
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .ios-step:last-child { margin-bottom: 0; }
+    .ios-step-num {
+      background: var(--coral);
+      color: white;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .btn-close-modal {
+      width: 100%;
+      background: var(--coral);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    /* ─── COUNTER ANIMATION ─── */
+    @keyframes countUp {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .count-animate { animation: countUp 0.4s ease-out; }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">❤️</div>
+      <div>
+        <div class="logo-text">SOLIDARIO</div>
+        <div class="logo-tag">Campaña activa</div>
+      </div>
+    </div>
+    <div class="share-count">
+      <div class="pulse-dot"></div>
+      <span id="counter-display">0</span> compartidos
+    </div>
+  </div>
+</header>
+
+<!-- Toast notification -->
+<div class="toast" id="toast"></div>
+
+<!-- Main -->
+<div class="main">
+
+  <!-- Hero -->
+  <div class="hero">
+    <span class="hero-emoji">👁️</span>
+    <h1 class="hero-title">Ayudemos a <em>Diandra</em><br>a ver el mundo</h1>
+    <p class="hero-sub">Una niña necesita tu ayuda para costear su cirugía ocular. Con un solo toque compartís con todos tus contactos de WhatsApp.</p>
+  </div>
+
+  <!-- Install Banner (shown if installable) -->
+  <div class="install-banner" id="install-banner">
+    <div class="install-banner-text">
+      <strong>📲 Instalá SOLIDARIO</strong>
+      <p>Guardala en tu pantalla y compartí la campaña desde cualquier lugar</p>
+    </div>
+    <button class="btn-install" id="btn-install-pwa">Instalar</button>
+  </div>
+
+  <!-- Campaign image card -->
+  <div class="campaign-card">
+    <div class="campaign-card-header">
+      <div class="avatar-circle">👧</div>
+      <div class="avatar-info">
+        <strong>Campaña por Diandra</strong>
+        <span>Cirugía ocular urgente</span>
+      </div>
+      <span class="urgent-badge">🔴 Urgente</span>
+    </div>
+
+    <!-- Image zone - tap to load -->
+    <div class="image-zone" id="image-zone" onclick="document.getElementById('file-input').click()">
+      <div class="image-placeholder" id="img-placeholder">
+        <div class="placeholder-icon">📷</div>
+        <p>Tocá aquí para cargar<br>la imagen de la campaña</p>
+        <small>JPG o PNG · La imagen tiene todos los datos</small>
+      </div>
+      <img id="campaign-img" src="" alt="Imagen de campaña solidaria por Diandra" style="display:none">
+      <div class="image-loaded-overlay" id="img-overlay">✅ Imagen lista</div>
+    </div>
+    <input type="file" id="file-input" accept="image/*">
+
+    <div class="campaign-card-footer">
+      <span>📌</span>
+      <span>La imagen contiene todos los datos para colaborar</span>
+    </div>
+  </div>
+
+  <!-- Message editor -->
+  <div class="section-label">Mensaje que se enviará</div>
+  <div class="message-box">
+    <div class="message-box-header">
+      <span>✏️ Mensaje personalizable</span>
+      <button class="edit-btn" onclick="focusMessage()">Editar</button>
+    </div>
+    <textarea id="message-text" rows="5">🙏 *TE NECESITO*
+
+Hola! Te comparto esta imagen con toda la información para ayudar a *Diandra*, una niña que necesita una cirugía ocular para recuperar la visión. 👁️❤️
+
+Por favor *mirá la imagen* y si podés colaborar, hacé la diferencia.
+
+📲 Bajate la app *SOLIDARIO* para seguir difundiendo: [enlace a tu app]
+
+¡Gracias por compartir! Cada mensaje cuenta 💛</textarea>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <span class="stat-number" id="stat-shares">0</span>
+      <div class="stat-label">Enviados</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number" id="stat-reach">0</span>
+      <div class="stat-label">Alcance est.</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number" id="stat-days">0</span>
+      <div class="stat-label">Días activa</div>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <div class="steps-card">
+    <h3>¿Cómo funciona?</h3>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Cargá la imagen</strong>
+        <p>Tocá el área de imagen arriba y seleccioná la foto de la campaña de Diandra desde tu galería.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Personalizá el mensaje</strong>
+        <p>El texto ya está listo pero podés adaptarlo. Incluye un llamado a instalar la app y seguir compartiendo.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Tocá "Compartir en WhatsApp"</strong>
+        <p>Se abrirá WhatsApp con la imagen y el mensaje listos. Elegí contactos individuales o grupos para difundir masivamente.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Invitá a otros a sumarse</strong>
+        <p>El mensaje incluye el link a SOLIDARIO para que tus contactos también puedan difundir la campaña.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    Con ❤️ para Diandra · <a href="#" onclick="showInstallModal()">Instalar en iPhone</a> · <span id="app-version">v1.0</span>
+  </div>
+
+</div>
+
+<!-- Bottom action bar -->
+<div class="bottom-bar">
+  <button class="btn-whatsapp" id="btn-share-wa" onclick="shareWhatsApp()">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Compartir en WhatsApp
+  </button>
+  <div class="btn-secondary-row">
+    <button class="btn-secondary" onclick="copyMessage()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      Copiar mensaje
+    </button>
+    <button class="btn-secondary" onclick="shareNative()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Compartir más
+    </button>
+  </div>
+</div>
+
+<!-- iOS Install Modal -->
+<div class="modal-overlay" id="install-modal" onclick="closeModalIfBg(event)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <h3>📱 Instalar en iPhone</h3>
+    <div class="ios-instructions">
+      <div class="ios-step">
+        <div class="ios-step-num">1</div>
+        <span>Tocá el botón <strong>Compartir</strong> (⬆️) en la barra inferior de Safari</span>
+      </div>
+      <div class="ios-step">
+        <div class="ios-step-num">2</div>
+        <span>Deslizá hacia abajo y tocá <strong>"Agregar a pantalla de inicio"</strong></span>
+      </div>
+      <div class="ios-step">
+        <div class="ios-step-num">3</div>
+        <span>Confirmá tocando <strong>"Agregar"</strong> arriba a la derecha</span>
+      </div>
+      <div class="ios-step">
+        <div class="ios-step-num">4</div>
+        <span>¡Listo! SOLIDARIO aparece como app en tu pantalla 🎉</span>
+      </div>
+    </div>
+    <p style="font-size:13px; color:var(--warm-gray); margin-bottom:16px;">En Android, tocá los tres puntos del navegador y elegí <strong>"Instalar aplicación"</strong> o <strong>"Añadir a pantalla de inicio"</strong>.</p>
+    <button class="btn-close-modal" onclick="closeInstallModal()">Entendido ✓</button>
+  </div>
+</div>
+
+<script>
+  // ─── STATE ───
+  let shareCount = parseInt(localStorage.getItem('solidario_shares') || '0');
+  let startDate = localStorage.getItem('solidario_start');
+  if (!startDate) {
+    startDate = new Date().toISOString();
+    localStorage.setItem('solidario_start', startDate);
+  }
+  let campaignImageFile = null;
+  let campaignImageURL = null;
+  let deferredPrompt = null;
+
+  // ─── INIT ───
+  window.addEventListener('load', () => {
+    updateCounters();
+    initServiceWorker();
+    checkInstallable();
+  });
+
+  function initServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(e => console.log('SW:', e));
+    }
+  }
+
+  function checkInstallable() {
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      deferredPrompt = e;
+      document.getElementById('install-banner').classList.add('visible');
+    });
+    window.addEventListener('appinstalled', () => {
+      document.getElementById('install-banner').classList.remove('visible');
+      showToast('✅ SOLIDARIO instalada correctamente');
+    });
+  }
+
+  document.getElementById('btn-install-pwa').addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') showToast('🎉 ¡App instalada!');
+      deferredPrompt = null;
+      document.getElementById('install-banner').classList.remove('visible');
+    } else {
+      showInstallModal();
+    }
+  });
+
+  // ─── IMAGE HANDLING ───
+  document.getElementById('file-input').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    campaignImageFile = file;
+    campaignImageURL = URL.createObjectURL(file);
+    const img = document.getElementById('campaign-img');
+    img.src = campaignImageURL;
+    img.style.display = 'block';
+    document.getElementById('img-placeholder').style.display = 'none';
+    document.getElementById('img-overlay').classList.add('visible');
+    showToast('📷 Imagen de campaña cargada');
+  });
+
+  // ─── SHARE TO WHATSAPP ───
+  async function shareWhatsApp() {
+    const message = document.getElementById('message-text').value.trim();
+    if (!message) { showToast('⚠️ Escribí un mensaje primero'); return; }
+
+    // Si hay imagen, usar Web Share API con imagen
+    if (campaignImageFile && navigator.canShare && navigator.canShare({ files: [campaignImageFile] })) {
+      try {
+        await navigator.share({
+          title: '💛 Ayudemos a Sofía - Campaña SOLIDARIO',
+          text: message,
+          files: [campaignImageFile]
+        });
+        registerShare();
+        showToast('💚 ¡Compartido! Gracias por ayudar');
+        return;
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          // fallback a WhatsApp link
+        }
+      }
+    }
+
+    // Fallback: abrir WhatsApp con mensaje (sin imagen automática)
+    if (!campaignImageFile) {
+      showToast('📷 Cargá la imagen primero para compartir con WhatsApp');
+      document.getElementById('image-zone').style.outline = '2px solid var(--coral)';
+      setTimeout(() => document.getElementById('image-zone').style.outline = '', 2000);
+      return;
+    }
+
+    const encodedMsg = encodeURIComponent(message);
+    const waURL = `https://wa.me/?text=${encodedMsg}`;
+    window.open(waURL, '_blank');
+    registerShare();
+    showToast('💚 Abriendo WhatsApp...');
+  }
+
+  // ─── NATIVE SHARE ───
+  async function shareNative() {
+    const message = document.getElementById('message-text').value;
+    const shareData = {
+      title: 'SOLIDARIO - Ayudemos a Sofía',
+      text: message,
+      url: window.location.href
+    };
+    if (campaignImageFile) shareData.files = [campaignImageFile];
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        registerShare();
+        showToast('💚 ¡Compartido!');
+      } catch (e) {}
+    } else {
+      copyMessage();
+    }
+  }
+
+  // ─── COPY MESSAGE ───
+  function copyMessage() {
+    const msg = document.getElementById('message-text').value;
+    navigator.clipboard.writeText(msg).then(() => {
+      showToast('📋 Mensaje copiado al portapapeles');
+    }).catch(() => {
+      const ta = document.getElementById('message-text');
+      ta.select();
+      document.execCommand('copy');
+      showToast('📋 Mensaje copiado');
+    });
+  }
+
+  function focusMessage() {
+    const ta = document.getElementById('message-text');
+    ta.focus();
+    ta.setSelectionRange(ta.value.length, ta.value.length);
+  }
+
+  // ─── COUNTERS ───
+  function registerShare() {
+    shareCount++;
+    localStorage.setItem('solidario_shares', shareCount.toString());
+    updateCounters();
+    // Animate counter
+    const el = document.getElementById('counter-display');
+    el.classList.remove('count-animate');
+    void el.offsetWidth;
+    el.classList.add('count-animate');
+  }
+
+  function updateCounters() {
+    const displayCount = shareCount;
+    const reach = shareCount * 150; // avg WhatsApp contacts
+    const days = Math.ceil((Date.now() - new Date(startDate).getTime()) / 86400000);
+
+    document.getElementById('counter-display').textContent = displayCount;
+    document.getElementById('stat-shares').textContent = displayCount;
+    document.getElementById('stat-reach').textContent = reach > 999 ? (reach/1000).toFixed(1) + 'k' : reach;
+    document.getElementById('stat-days').textContent = days;
+  }
+
+  // ─── TOAST ───
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // ─── MODALS ───
+  function showInstallModal() {
+    document.getElementById('install-modal').classList.add('open');
+  }
+  function closeInstallModal() {
+    document.getElementById('install-modal').classList.remove('open');
+  }
+  function closeModalIfBg(e) {
+    if (e.target.classList.contains('modal-overlay')) closeInstallModal();
+  }
+</script>
+</body>
+</html>
